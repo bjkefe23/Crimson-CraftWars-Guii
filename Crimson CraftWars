@@ -1,0 +1,240 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+local tik = "✓"
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local OpenFrame = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local TextLabel_3 = Instance.new("TextLabel")
+local AutoFarmMeterials = Instance.new("TextButton")
+local TextLabel_4 = Instance.new("TextLabel")
+local KillAll = Instance.new("TextButton")
+local WalkSpeed = Instance.new("TextButton")
+local JumpPower = Instance.new("TextButton")
+local TextLabel_5 = Instance.new("TextLabel")
+local TextLabel_6 = Instance.new("TextLabel")
+local TextLabel_7 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Main.Position = UDim2.new(0.0452674888, 0, 0.112359554, 0)
+Main.Size = UDim2.new(0, 159, 0, 28)
+Main.Visible = true
+Main.Active = true
+Main.Draggable = true
+
+
+TextLabel.Parent = Main
+TextLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(0, 133, 0, 28)
+TextLabel.Font = Enum.Font.GothamSemibold
+TextLabel.Text = "Crimson CraftWars"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+OpenFrame.Name = "Open Frame"
+OpenFrame.Parent = Main
+OpenFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+OpenFrame.BackgroundTransparency = 1.000
+OpenFrame.Position = UDim2.new(0.836477995, 0, 0, 0)
+OpenFrame.Size = UDim2.new(0, 26, 0, 28)
+OpenFrame.Font = Enum.Font.GothamSemibold
+OpenFrame.Text = "-"
+OpenFrame.TextColor3 = Color3.fromRGB(255, 255, 255)
+OpenFrame.TextSize = 30.000
+OpenFrame.MouseButton1Down:Connect(function()
+	if Frame.Visible == false then
+		Frame.Visible = true
+	else
+		if Frame.Visible == true then
+			Frame.Visible = false
+		end
+	end
+		
+	
+end)
+TextLabel_2.Parent = Main
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+TextLabel_2.Position = UDim2.new(0, 0, 1, 0)
+TextLabel_2.Size = UDim2.new(0, 159, 0, 3)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = ""
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 255, 0)
+TextLabel_2.TextSize = 14.000
+
+Frame.Parent = Main
+Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame.Position = UDim2.new(0, 0, 1.10714281, 0)
+Frame.Size = UDim2.new(0, 159, 0, 203)
+Frame.Visible = true
+Frame.Active = true
+
+TextLabel_3.Parent = Frame
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.BorderColor3 = Color3.fromRGB(60, 60, 60)
+TextLabel_3.Size = UDim2.new(0, 159, 0, 22)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "Auto Farm Meterials"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextSize = 14.000
+local a = false
+AutoFarmMeterials.Name = "AutoFarm Meterials"
+AutoFarmMeterials.Parent = TextLabel_3
+AutoFarmMeterials.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+AutoFarmMeterials.Position = UDim2.new(0.836477995, 0, 0, 0)
+AutoFarmMeterials.Size = UDim2.new(0, 26, 0, 21)
+AutoFarmMeterials.Font = Enum.Font.SourceSans
+AutoFarmMeterials.Text = ""
+AutoFarmMeterials.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarmMeterials.TextSize = 14.000
+AutoFarmMeterials.MouseButton1Down:Connect(function()
+	if a == false then
+		a = true
+		AutoFarmMeterials.Text = tik
+		AutoFarmMeterials.BackgroundColor3 = Color3.fromRGB(0,255,0)
+		AutoFarmMeterials.TextColor3 = Color3.fromRGB(0,0,0)
+		while a  do
+			wait()
+
+			for i,v in pairs(game:GetDescendants()) do
+				if v.Name == "Ore" and v.Parent.ClassName == "Model" and v.Parent:FindFirstChild("Head") then
+					v.Parent:FindFirstChild("Head").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(-5,0,0)
+					game:GetService("Workspace")[game.Players.LocalPlayer.Name][game.Workspace[game.Players.LocalPlayer.Name]:FindFirstChildOfClass("Tool").Name].RemoteFunction:InvokeServer("hit",{v,math.huge})
+				end
+					   end
+		end
+		spawn(function()
+			for i,v in pairs(game:GetDescendants()) do
+				if v.Name == "Ore" and v.Parent.ClassName == "Model" and v.Parent:FindFirstChild("Head") then
+					v.Parent:FindFirstChild("Head").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(-5,0,0)
+					game:GetService("Workspace")[game.Players.LocalPlayer.Name][game.Workspace[game.Players.LocalPlayer.Name]:FindFirstChildOfClass("Tool").Name].RemoteFunction:InvokeServer("hit",{v,math.huge})
+				end
+			end
+				   end)
+
+	else
+		a = false
+		AutoFarmMeterials.Text = ""
+		AutoFarmMeterials.BackgroundColor3 = Color3.fromRGB(20,20,20)
+	end
+end)
+
+TextLabel_4.Parent = Frame
+TextLabel_4.BackgroundTransparency = 1.000
+TextLabel_4.BorderColor3 = Color3.fromRGB(60, 60, 60)
+TextLabel_4.Position = UDim2.new(0, 0, 0.104796246, 0)
+TextLabel_4.Size = UDim2.new(0, 159, 0, 22)
+TextLabel_4.Font = Enum.Font.SourceSans
+TextLabel_4.Text = "KillAll"
+TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.TextSize = 14.000
+local b = false
+KillAll.Name = "Kill All"
+KillAll.Parent = TextLabel_4
+KillAll.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+KillAll.Position = UDim2.new(0.836477995, 0, 0, 0)
+KillAll.Size = UDim2.new(0, 26, 0, 24)
+KillAll.Font = Enum.Font.SourceSans
+KillAll.Text = ""
+KillAll.TextColor3 = Color3.fromRGB(255, 255, 255)
+KillAll.TextSize = 14.000
+KillAll.MouseButton1Down:Connect(function()
+	if b == false then
+		b = true
+		KillAll.Text = tik
+		KillAll.BackgroundColor3 = Color3.fromRGB(0,255,0)
+		KillAll.TextColor3 = Color3.fromRGB(0,0,0)
+		while b do
+				wait()
+					for i,v in pairs(game:GetDescendants()) do
+    if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("Health") then
+        v:FindFirstChild("Health").Name = "A"
+        else
+    if v.Name == "Humanoid" and v.Parent:FindFirstChild("Health") then
+						game:GetService("Workspace")[game.Players.LocalPlayer.Name][game.Workspace[game.Players.LocalPlayer.Name]:FindFirstChildOfClass("Tool").Name].RemoteFunction:InvokeServer("hit",{v,math.huge})
+					end
+				end
+end
+end
+spawn(function()
+			for i,v in pairs(game:GetDescendants()) do
+    if v.Name == game.Players.LocalPlayer.Name and v:FindFirstChild("Health") then
+        v:FindFirstChild("Health").Name = "A"
+        else
+    if v.Name == "Humanoid" and v.Parent:FindFirstChild("Health") then
+						game:GetService("Workspace")[game.Players.LocalPlayer.Name][game.Workspace[game.Players.LocalPlayer.Name]:FindFirstChildOfClass("Tool").Name].RemoteFunction:InvokeServer("hit",{v,math.huge})
+					end
+				end
+				end
+				end)	
+	else
+		b = false
+		KillAll.Text = ""
+		KillAll.BackgroundColor3 = Color3.fromRGB(20,20,20)
+	end
+end)
+
+WalkSpeed.Name = "WalkSpeed"
+WalkSpeed.Parent = Frame
+WalkSpeed.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+WalkSpeed.Position = UDim2.new(0, 0, 0.220723242, 0)
+WalkSpeed.Size = UDim2.new(0, 159, 0, 18)
+WalkSpeed.Font = Enum.Font.SourceSans
+WalkSpeed.Text = "WalkSpeed"
+WalkSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
+WalkSpeed.TextSize = 14.000
+WalkSpeed.MouseButton1Down:Connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 200
+
+end)
+
+JumpPower.Name = "JumpPower"
+JumpPower.Parent = Frame
+JumpPower.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+JumpPower.Position = UDim2.new(0, 0, 0.307769835, 0)
+JumpPower.Size = UDim2.new(0, 159, 0, 18)
+JumpPower.Font = Enum.Font.SourceSans
+JumpPower.Text = "JumpPower"
+JumpPower.TextColor3 = Color3.fromRGB(255, 255, 255)
+JumpPower.TextSize = 14.000
+JumpPower.MouseButton1Down:Connect(function()
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
+end)
+TextLabel_5.Parent = Frame
+TextLabel_5.BackgroundColor3 = Color3.fromRGB(162, 163, 165)
+TextLabel_5.Position = UDim2.new(0, 0, 0.394088656, 0)
+TextLabel_5.Size = UDim2.new(0, 159, 0, 17)
+TextLabel_5.Font = Enum.Font.SourceSans
+TextLabel_5.Text = "Credits"
+TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.TextSize = 14.000
+
+TextLabel_6.Parent = Frame
+TextLabel_6.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_6.BackgroundTransparency = 1.000
+TextLabel_6.Position = UDim2.new(0, 0, 0.477832526, 0)
+TextLabel_6.Size = UDim2.new(0, 159, 0, 53)
+TextLabel_6.Font = Enum.Font.GothamSemibold
+TextLabel_6.Text = "V3rmillion:bjkefe2"
+TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_6.TextSize = 14.000
+
+TextLabel_7.Parent = Frame
+TextLabel_7.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_7.BackgroundTransparency = 1.000
+TextLabel_7.Position = UDim2.new(0, 0, 0.738916278, 0)
+TextLabel_7.Size = UDim2.new(0, 159, 0, 53)
+TextLabel_7.Font = Enum.Font.GothamSemibold
+TextLabel_7.Text = "Discord:efeeee#8151"
+TextLabel_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_7.TextSize = 14.000
